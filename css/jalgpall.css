@@ -1,0 +1,9 @@
+/* Jalgpalli lehe värvid (roheline).
+   Kõik muu on failis main.css */
+
+:root {
+    --bg-color: rgb(166, 224, 146);
+    --hero-bg: rgba(137, 194, 118, 0.3);
+    --line-color: #A6E092;
+    --btn-color: #2f7d32;
+}

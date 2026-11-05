@@ -1,0 +1,9 @@
+/* Korvpalli lehe värvid (oranz).
+   Kõik muu on failis main.css */
+    
+:root {
+    --bg-color: rgb(255, 165, 0);
+    --hero-bg: rgba(255, 140, 0, 0.3);
+    --line-color: #FFA500;
+    --btn-color: #FF8C00;
+}
