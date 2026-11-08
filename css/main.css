@@ -128,6 +128,8 @@ header nav ul li a:hover {
 
 .hero-info {
     flex: 1;
+    font-size: 18px;
+    line-height: 1.6;
 }
 
 .hero-info p {
@@ -135,10 +137,29 @@ header nav ul li a:hover {
     hyphens: auto;
 }
 
+.hero-info li {
+    text-align: justify;
+    hyphens: auto;
+}
+
+.hero-info ul {
+    margin: 12px 0;
+    padding-left: 20px;
+}
+
+.hero-info h3 {
+    margin-bottom: 10px;
+}
+
 .hero img {
     width: 40%;
-    height: 400px;
+    height: 350px;
     object-fit: contain;
+}
+
+.hero.container {
+    padding: 40px 50px;
+    box-sizing: border-box;
 }
 
 /* ===== AVALEHT ===== */
