@@ -1,0 +1,9 @@
+/* Võrkpalli lehe värvid (kollane).
+   Kõik muu on failis main.css */
+
+:root {
+    --bg-color: rgb(255, 228, 91);
+    --hero-bg: rgba(255, 228, 91, 0.45);
+    --line-color: rgb(130, 180, 230);
+    --btn-color: #eed12e;
+}

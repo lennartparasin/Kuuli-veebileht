@@ -1,0 +1,9 @@
+/* Avalehe värvid (sinine).
+   Kõik muu on failis main.css */
+
+:root {
+    --bg-color: rgb(146, 190, 224);
+    --hero-bg: rgba(146, 190, 224, 0.3);
+    --line-color: #92BEE0;
+    --btn-color: #2a6f9e;
+}
