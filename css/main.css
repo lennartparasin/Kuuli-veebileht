@@ -1,9 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* ==========================================================
+   main.css – saidi põhistiilid
+   Sisukord:
+   1. Fondid ja lähtestus
+   2. Üldised elemendid ja CSS-muutujad
+   3. Päis (header) ja navigatsioon
+   4. Pealkirjad, tekst ja nupud
+   5. Galerii
+   6. Hero-plokk
+   7. Avaleht (kaardid)
+   8. Jalus (footer)
+   9. Animatsioonid ja lightbox
+   10. Responsiivsus (mobiil ja tahvelarvuti)
+   ========================================================== */
 
+/* ===== 1. FONDID JA LÄHTESTUS ===== */
+
+/* Laeme Google Fontsist Tuffy*/
+@import url('https://fonts.googleapis.com/css2?family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Nullime brauseri vaikimisi välimised ja sisemised vahed kõigil elementidel */
 * {
     margin: 0;
     padding: 0;
 }
+
+/* ===== 2. ÜLDISED ELEMENDID JA CSS-MUUTUJAD ===== */
 
 body {
     font-family: 'Tuffy', sans-serif;
@@ -13,24 +34,31 @@ body {
     min-height: 100vh;
 }
 
+/* Lingid: ilma allajoonimiseta, vaikimisi mustad */
 a {
     text-decoration: none;
     color: #000;
 }
 
+/* Pildid: blokkelement ega ületa oma konteineri laiust */
 img {
     display: block;
     max-width: 100%;
 }
 
+/* CSS-muutujad, mida kasutatakse kogu failis.
+   NB! Muutujad --bg-color, --bg-color-2, --btn-color, --hero-bg ja --line-color
+   määratakse igal HTML-lehel eraldi. */
 :root {
-    --text-color: #101820;
-    --surface: rgba(255, 255, 255, 0.48);
-    --shadow: 0 12px 30px rgba(31, 65, 92, 0.10);
+    --text-color: #101820;                 
+    --surface: rgba(255, 255, 255, 0.48);  
+    --shadow: 0 12px 30px rgba(31, 65, 92, 0.10); 
 }
 
+/* Sujuv kerimine ankurlinkidele */
 html { scroll-behavior: smooth; }
 
+/* Keskele joondatud sisukonteiner: max laius 1100px ja küljevahed 20px */
 .container {
     max-width: 1100px;
     margin-left: auto;
@@ -39,6 +67,8 @@ html { scroll-behavior: smooth; }
     padding-right: 20px;
 }
 
+/* Põhisisu ümbris: taustale vertikaalne värviüleminek (alt üles).
+   flex: 1 venitab ümbrise kogu vaba kõrguse peale (jalus läheb alla) */
 .wrapper {
     background: linear-gradient(0deg, var(--bg-color) 20%, var(--bg-color-2, #fff) 100%);
     width: 100%;
@@ -46,10 +76,13 @@ html { scroll-behavior: smooth; }
     flex: 1;
 }
 
+/* ===== 3. HEADER JA NAVIGATSIOON ===== */
+
 header {
     padding: 50px 0;
 }
 
+/* Logo: suur, paks, suurtähtedega tekst; elemendid reas ja murduvad vajadusel */
 header .logo {
     display: inline-flex;
     align-items: center;
@@ -62,12 +95,14 @@ header .logo {
     font-weight: 900;
 }
 
+/* Navigatsiooni plokk paremal */
 header nav {
     float: right;
     width: 25%;
     flex: 0 0 auto;
 }
 
+/* Menüü: lingid reas, joondatud paremale, vajadusel murduvad uuele reale */
 header nav ul {
     display: flex;
     align-items: center;
@@ -82,6 +117,7 @@ header nav ul li {
     color: #fff;
 }
 
+/* Menüü lingid: sujuv värvi- ja liikumisüleminek */
 header nav ul li a {
     display: inline-block;
     color: #101820;
@@ -89,8 +125,10 @@ header nav ul li a {
     font-size: 18px;
     transition: color 0.25s ease, transform 0.25s ease;
 }
+/* Hoverdamisel muutub värv nupuvärviks ja link tõuseb 2px ülespoole */
 header nav ul li a:hover { color: var(--btn-color); transform: translateY(-2px); }
 
+/* Päise sisu: logo vasakul, menüü paremal (flex paigutus) */
 header > .container, .header-inner {
     display: flex;
     align-items: center;
@@ -98,6 +136,7 @@ header > .container, .header-inner {
     gap: 28px;
 }
 
+/* Spordipalli emoji logos: põrkeanimatsioon lehe laadimisel */
 .logo #sport-ball {
     display: inline-block;
     font-size: 0.95em;
@@ -105,6 +144,9 @@ header > .container, .header-inner {
     animation: logoBounce 1.1s ease both;
 }
 
+/* ===== 4. PEALKIRJAD, TEKST JA NUPUD ===== */
+
+/* Pealkirjad konteineris: keskel; suurus kohandub ekraaniga */
 .container h1, .container h2 {
     text-align: center;
     font-family: 'Tuffy', sans-serif;
@@ -113,6 +155,8 @@ header > .container, .header-inner {
 }
 .container h1 { margin: 30px 0 14px; font-size: clamp(28px, 4vw, 40px); }
 .container h2 { margin: 24px 0 18px; font-size: clamp(26px, 3.4vw, 36px); }
+
+/* Lõigud otse konteineris: kitsas keskele joondatud tekstiveerg */
 .container > p {
     max-width: 850px;
     margin: 0 auto 18px;
@@ -120,6 +164,7 @@ header > .container, .header-inner {
     line-height: 1.65;
 }
 
+/* Nupp: värv tuleb muutujast --btn-color (iga lehe oma) */
 .btn {
     display: inline-block;
     padding: 5px 15px;
@@ -129,6 +174,9 @@ header > .container, .header-inner {
     border-radius: 2px;
 }
 
+/* ===== 5. GALERII ===== */
+
+/* Galerii: 3 võrdset veergu, vahed 16px */
 .gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -136,6 +184,7 @@ header > .container, .header-inner {
     padding: 24px 0;
 }
 
+/* Galerii pildid: ühesugune külgsuhe 4:3, pilt kärbitakse (cover), ümarad nurgad */
 .gallery img {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -143,6 +192,7 @@ header > .container, .header-inner {
     border-radius: 10px;
 }
 
+/* Hover/fookus: pilt suureneb veidi, värvid küllastuvad ja tekib vari */
 .gallery img:hover, .gallery img:focus-visible {
     transform: scale(1.025);
     filter: saturate(1.08);
@@ -150,18 +200,9 @@ header > .container, .header-inner {
     outline: none;
 }
 
-@media (max-width: 800px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+/* ===== 6. HERO-PLOKK (tekst + pilt kõrvuti) ===== */
 
-@media (max-width: 500px) {
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-}
-
+/* Hero: tekst ja pilt reas, taust tuleb muutujast --hero-bg */
 .hero {
     display: flex;
     align-items: center;
@@ -174,12 +215,14 @@ header > .container, .header-inner {
     border-radius: 20px;
 }
 
+/* Tekstiosa võtab kogu vaba ruumi pildi kõrval */
 .hero-info {
     flex: 1;
     font-size: 18px;
     line-height: 1.6;
 }
 
+/* Tekst ja loendid joondatud mõlemale servale, automaatsed poolitused */
 .hero-info p {
     text-align: justify;
     hyphens: auto;
@@ -199,6 +242,7 @@ header > .container, .header-inner {
     margin-bottom: 10px;
 }
 
+/* Hero pilt: 40% laiusest, püsiv kõrgus, kogu pilt nähtav; aeglane "hõljumise" animatsioon */
 .hero img {
     width: 40%;
     height: 330px;
@@ -206,12 +250,16 @@ header > .container, .header-inner {
     animation: gentleFloat 4s ease-in-out infinite;
 }
 
+/* Kui hero on ka .container: suuremad sisemised vahed ja box-sizing,
+   et padding ei suurendaks elemendi kogulaiust */
 .hero.container {
     padding: 40px 50px;
     box-sizing: border-box;
 }
 
-/* ===== AVALEHT ===== */
+/* ===== 7. AVALEHT (kaartide ruudustik) ===== */
+
+/* Kaartide ruudustik: 3 võrdset veergu (minmax(0, 1fr) takistab sisu "lõhkumist") */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -220,6 +268,7 @@ header > .container, .header-inner {
     text-align: center;
 }
 
+/* Kaart: pilt ja tekst veerus, poolläbipaistev taust, ümarad nurgad ja pehme vari */
 .card {
     display: flex;
     min-height: 300px;
@@ -239,12 +288,15 @@ header > .container, .header-inner {
     transition: transform 0.32s ease, box-shadow 0.32s ease, background 0.32s ease;
 }
 
+/* Hover/fookus: kaart tõuseb ülespoole, taust muutub heledamaks, vari tugevneb */
 .card:hover, .card:focus-visible {
     transform: translateY(-8px);
     background: rgba(255, 255, 255, 0.72);
     box-shadow: var(--shadow);
     outline: none;
 }
+
+/* Kaardi pilt: täislaius, püsiv kõrgus, kogu pilt nähtav */
 .card img {
     width: 100%;
     height: 220px;
@@ -252,20 +304,18 @@ header > .container, .header-inner {
     padding: 8px;
     transition: transform 0.45s ease;
 }
+
+/* Kaardi hoverdamisel pilt suureneb ja pöördub veidi */
 .card:hover img, .card:focus-visible img { transform: scale(1.07) rotate(-3deg); }
 
-@media (max-width: 800px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
-}
+/* ===== 8. FOOTER ===== */
 
-/* ===== FOOTER ===== */
 footer {
     background-color: #fff;
     padding: 40px 0;
 }
 
+/* Jaluse sisu keskele */
 .footer-content {
     text-align: center;
 }
@@ -282,10 +332,12 @@ footer a {
     color: #000;
 }
 
+/* Jaluse lingi hoverdamisel ilmub allpool joon (värv muutujast --line-color) */
 footer a:hover {
     border-bottom: 2px solid var(--line-color);
 }
 
+/* Kontaktid reas, keskel; väikese ekraani peal murduvad uuele reale */
 .contacts {
     display: flex;
     flex-wrap: wrap;
@@ -293,7 +345,11 @@ footer a:hover {
     gap: 10px 60px;
 }
 
-/* Elementide ilmumine kerimisel */
+/* ===== 9. ANIMATSIOONID JA LIGHTBOX ===== */
+
+/* Elementide ilmumine kerimisel:
+   algul nähtamatu ja 26px allpool; JS lisab klassi .is-visible, kui element satub vaatevälja.
+   Viivitust saab muuta muutujaga --reveal-delay */
 .reveal {
     opacity: 0;
     transform: translateY(26px);
@@ -302,17 +358,21 @@ footer a:hover {
 }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
+/* Logo põrkeanimatsioon: kukub ülalt, põrkab ja asetub paika */
 @keyframes logoBounce {
     0% { transform: translateY(-12px) rotate(-12deg); }
     55% { transform: translateY(3px) rotate(7deg); }
     100% { transform: translateY(0) rotate(0); }
 }
+
+/* Pehme üles-alla hõljumine (kasutatakse hero pildil) */
 @keyframes gentleFloat {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-8px); }
 }
 
-/* Galerii suur pilt */
+/* Galerii suur pilt (lightbox):
+   kogu ekraani katvas tumedas kihis; peidetud, kuni JS lisab klassi .is-open */
 .lightbox {
     position: fixed;
     inset: 0;
@@ -326,7 +386,10 @@ footer a:hover {
     visibility: hidden;
     transition: opacity 0.25s ease, visibility 0.25s ease;
 }
+/* Avatud lightbox on nähtav */
 .lightbox.is-open { opacity: 1; visibility: visible; }
+
+/* Suur pilt: mahub ekraanile, proportsioonid säilivad */
 .lightbox-image {
     max-width: min(100%, 1100px);
     max-height: 85vh;
@@ -334,6 +397,8 @@ footer a:hover {
     border-radius: 10px;
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
 }
+
+/* Sulgemisnupp (x) paremas ülanurgas */
 .lightbox-close {
     position: absolute;
     top: 18px;
@@ -348,9 +413,15 @@ footer a:hover {
     line-height: 1;
     cursor: pointer;
 }
+
+/* Kui lightbox on avatud, keelame taustalehe kerimise */
 body.lightbox-open { overflow: hidden; }
 
+/* ===== 10. RESPONSIIVSUS ===== */
+
+/* Tahvelarvuti (kuni 800px) */
 @media (max-width: 800px) {
+    /* Päis: logo ja menüü üksteise alla, keskele */
     header > .container, .header-inner {
         flex-direction: column;
         align-items: center;
@@ -358,27 +429,17 @@ body.lightbox-open { overflow: hidden; }
     }
     header .logo { justify-content: center; font-size: 26px; }
     header nav ul { justify-content: center; gap: 12px 24px; }
+    /* Kaardid: 2 veergu (kirjutab üle eespool oleva 1 veeru reegli) */
     .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* Hero: väiksemad vahed ja madalam pilt */
     .hero { gap: 24px; padding: 28px; }
     .hero img { height: 260px; }
+    /* Galerii: 2 veergu */
     .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 560px) {
-    header { padding: 24px 0; }
-    header .logo { font-size: 22px; gap: 4px 8px; }
-    header .logo small { width: 100%; font-size: 0.58em; }
-    header nav ul { gap: 10px 18px; }
-    header nav ul li a { font-size: 16px; }
-    .grid, .gallery { grid-template-columns: 1fr; }
-    .card { min-height: 270px; }
-    .card img { height: 205px; }
-    .hero { flex-direction: column; padding: 24px 20px; }
-    .hero img { width: 100%; height: 230px; }
-    .container > p { font-size: 16px; }
-    .contacts { flex-direction: column; gap: 8px; }
-}
-
+/* Ligipääsetavus: kui kasutaja on seadnud süsteemis "vähem liikumist",
+   lülitame animatsioonid ja sujuva kerimise praktiliselt välja */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         scroll-behavior: auto !important;
@@ -386,5 +447,6 @@ body.lightbox-open { overflow: hidden; }
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+    /* Ilmuvad elemendid on kohe nähtavad */
     .reveal { opacity: 1; transform: none; }
 }
